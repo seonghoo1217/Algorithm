@@ -12,8 +12,13 @@ public class _2 {
             map.put(x,map.getOrDefault(x,0)+1);
         }
         for (char x:str2.toLowerCase().toCharArray()){
+            System.out.println("map!!!!! = " + !map.containsKey(x));
             if(!map.containsKey(x)||map.get(x)==0) return "NO";
+            System.out.println("map = " + map);
+            System.out.println("map.get(x) = " + map.get(x));
             map.put(x,map.get(x)-1);
+            System.out.println("map2 = " + map);
+            System.out.println("map,get(x)2 = " + map.get(x));
         }
         return answer;
     }
