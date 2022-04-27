@@ -1,21 +1,24 @@
 package chapter5;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class _6 {
 
     public int solution(int i,int n){
-        int answer;
-        Stack<Integer> stack=new Stack<>();
-        while (true){
-            for(int k=0;k<i;k++){
-                System.out.println(k);
-                if (k==n) stack.pop();
-                else stack.push(k);
-                System.out.println("stack = " + stack);
+        int answer=0;
+        Queue<Integer> Q=new LinkedList<>();
+        for (int k=1;k<=i;k++)Q.offer(k);
+        while (!Q.isEmpty()){
+            for (int k=1;k<n;k++){
+                Q.offer(Q.poll());
             }
+            Q.poll();
+            if (Q.size()==1) answer=Q.poll();
         }
+        return answer;
     }
 
     public static void main(String[] args) {
