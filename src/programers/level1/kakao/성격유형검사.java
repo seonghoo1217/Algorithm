@@ -1,40 +1,46 @@
 package programers.level1.kakao;
 
+import chapter1.Palindrome;
+
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class 성격유형검사 {
-    static class Solution {
+    class Solution {
+        int[] scoreList = {3, 2, 1, 0, 1, 2, 3};
+        String indexString = "RTCFJMAN";
         public String solution(String[] survey, int[] choices) {
             String answer = "";
-            HashMap<Character,Integer> hashMap =new HashMap<>();
-            for (int i=0;i<survey.length;i++){
-                if (choices[i]==4) answer+="";
-                else if(choices[i]==1) {
-                    hashMap.put(survey[i].charAt(0), hashMap.getOrDefault(survey[i].charAt(0),0)+3);
-                }else if (choices[i]==2){
-                    hashMap.put(survey[i].charAt(0), hashMap.getOrDefault(survey[i].charAt(0),0)+2);
-                }else if (choices[i]==3){
-                    hashMap.put(survey[i].charAt(0), hashMap.getOrDefault(survey[i].charAt(0),0)+1);
-                }
-                else if(choices[i]==5) {
-                    hashMap.put(survey[i].charAt(1), hashMap.getOrDefault(survey[i].charAt(1),0)+1);
-                }else if (choices[i]==6){
-                    hashMap.put(survey[i].charAt(1), hashMap.getOrDefault(survey[i].charAt(1),0)+2);
-                }else if (choices[i]==7){
-                    hashMap.put(survey[i].charAt(1), hashMap.getOrDefault(survey[i].charAt(1),0)+3);
-                }
+            Map<Character, Integer> map = new HashMap<Character, Integer>();
+
+            for (int i = 0; i < indexString.length(); i++) {
+                map.put(indexString.charAt(i), 0);
             }
 
+            for (int i = 0; i < survey.length; i++) {
+                char char1 = survey[i].charAt(0);
+                char char2 = survey[i].charAt(1);
 
-            System.out.println("hashMap = " + hashMap);
+                int selectNum = choices[i];
+                int selectScore = scoreList[selectNum - 1];
+
+                if (selectNum < 4)
+                    map.put(char1, map.get(char1) + selectScore);
+                else if(selectNum > 4)
+                    map.put(char2, map.get(char2) + selectScore);
+            }
+
+            for (int i = 0; i < indexString.length(); i += 2) {
+                char index0 = indexString.charAt(i);
+                char index1 = indexString.charAt(i + 1);
+
+                if (!Objects.equals(map.get(index0), map.get(index1)) && map.get(index0) < map.get(index1))
+                    answer += String.valueOf(index1);
+                else
+                    answer += String.valueOf(index0);
+            }
             return answer;
         }
-    }
-
-    public static void main(String[] args) {
-        Solution solution=new Solution();
-        String survey[]={"AN", "CF", "MJ", "RT", "NA"};
-        int choices[]={5, 3, 2, 7, 5};
-        solution.solution(survey,choices);
     }
 }
