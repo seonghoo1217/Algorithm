@@ -23,6 +23,7 @@ public class 신규아이디추천 {
                     answer += answer.charAt(answer.length()-1);
                 }
             }
+            System.out.println("answer = " + answer);
             return answer;
         }
     }
