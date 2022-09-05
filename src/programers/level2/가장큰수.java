@@ -1,36 +1,36 @@
 package programers.level2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class 가장큰수 {
     static class Solution {
         public String solution(int[] numbers) {
             String answer = "";
-            ArrayList<Integer> arrayList=new ArrayList<>();
+            String[] arr=new String[numbers.length];
             for (int i=0;i<numbers.length;i++){
-                if (numbers[i]==1000){
-                    arrayList.add(1);
-                    arrayList.add(0);
-                    arrayList.add(0);
-                    arrayList.add(0);
-                }else if(numbers[i]>=100){
-                    arrayList.add(Integer.parseInt(String.valueOf(String.valueOf(numbers[i]).charAt(0))));
-                    arrayList.add(Integer.parseInt(String.valueOf(String.valueOf(numbers[i]).charAt(1))));
-                    arrayList.add(Integer.parseInt(String.valueOf(String.valueOf(numbers[i]).charAt(2))));
-                }else if (numbers[i]>=10){
-                    arrayList.add(Integer.parseInt(String.valueOf(String.valueOf(numbers[i]).charAt(0))));
-                    arrayList.add(Integer.parseInt(String.valueOf(String.valueOf(numbers[i]).charAt(1))));
-                }else {
-                    arrayList.add(Integer.parseInt(String.valueOf(String.valueOf(numbers[i]).charAt(0))));
+                arr[i]= String.valueOf(numbers[i]);
+            }
+
+            Arrays.sort(arr, new Comparator<String>() {
+                @Override
+                public int compare(String o1, String o2) {
+//                    System.out.println("o1 = " + o1);
+//                    System.out.println("o2 = " + o2);
+                    return (o2+o1).compareTo(o1+o2);
                 }
-            }
-            Collections.sort(arrayList,Collections.reverseOrder());
-            for (int i=0;i<arrayList.size();i++){
-                answer+=arrayList.get(i);
-            }
-            System.out.println("answer = " + answer);
-            return answer;
+            });
+
+            if (arr[0].equals("0")) return "0";
+
+            /*Arrays.sort(numbers,(a,b)->{
+                return a+b;
+            });*/
+
+//            System.out.println(String.join("",arr));
+            return String.join("",arr);
         }
     }
 
