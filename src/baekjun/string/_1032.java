@@ -13,12 +13,25 @@ public class _1032 {
             str[i]=br.readLine();
         }
 
-        for (int i=1;i<N;i++){
-            for (int j=0;j<str[i].length();j++){
+        StringBuilder sb=new StringBuilder();
+        boolean check=true;
+        for (int i=0;i<str[0].length();i++){
+            char c = str[0].charAt(i);
 
+            check=true;
+            for (int j=0;j<N;j++){
+                if (c!=str[j].charAt(i)){
+                    check=false;
+                    break;
+                }
+            }
+
+            if (check){
+                sb.append(c);
+            } else {
+                sb.append("?");
             }
         }
-
-
+        System.out.println(sb.toString());
     }
 }
