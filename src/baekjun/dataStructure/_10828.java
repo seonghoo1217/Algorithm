@@ -14,24 +14,14 @@ public class _10828 {
             String S = br.readLine();
             String[] arr = S.split(" ");
 
-            System.out.println("S="+S);
-            System.out.println(stack);
-            if (arr[0].equals("push")){
-                System.out.println("arr[0]="+arr[0]);
-                System.out.println("arr[1]="+arr[1]);
-                stack.push(Integer.parseInt(arr[1]));
-            }
-
-            if (S.equals("top")&&!stack.isEmpty()) System.out.println(stack.peek());
-            else System.out.println(-1);
-
-            if (S.equals("size")) System.out.println(stack.size());
-
-            if (S.equals("pop")&&!stack.isEmpty()) System.out.println(stack.pop());
-            else System.out.println(-1);
-
-            if (S.equals("empty")&&stack.isEmpty()) System.out.println(1);
-            else System.out.println(0);
+            if (arr[0].equals("push")) stack.push(Integer.parseInt(arr[1]));
+            else if (S.equals("top")&&!stack.isEmpty()) System.out.println(stack.peek());
+            else if (S.equals("top"))System.out.println(-1);
+            else if (S.equals("size")) System.out.println(stack.size());
+            else if (S.equals("pop")&&!stack.isEmpty()) System.out.println(stack.pop());
+            else if (S.equals("pop"))System.out.println(-1);
+            else if (S.equals("empty")&&stack.isEmpty()) System.out.println(1);
+            else if (S.equals("empty"))System.out.println(0);
 
         }
     }
