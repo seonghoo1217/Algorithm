@@ -1,0 +1,19 @@
+package programers.level1;
+
+public class 콜라츠추측 {
+	public int solution(long num) {
+		int answer = 0;
+
+		while (true){
+			if (num==1) break;
+			if (answer>500) {
+				answer=-1;
+				break;
+			}
+			num = num % 2 == 0 ? num / 2 : num * 3 + 1;
+			answer++;
+		}
+		System.out.println(answer);
+		return answer;
+	}
+}
