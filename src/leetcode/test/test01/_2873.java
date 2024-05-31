@@ -1,4 +1,4 @@
-package leetcode.test;
+package leetcode.test.test01;
 
 public class _2873 {
     public long maximumTripletValue(int[] nums) {
