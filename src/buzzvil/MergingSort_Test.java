@@ -1,5 +1,7 @@
 package buzzvil;
 
+import java.util.Arrays;
+
 public class MergingSort_Test {
     public static void main(String[] args) {
         int[] A = {1, 2, 7, 9, 10};
@@ -24,5 +26,8 @@ public class MergingSort_Test {
         while (j < B.length) {
             temp[k++] = B[j++];
         }
+
+
+        Arrays.stream(temp).forEach(e -> System.out.println(e));
     }
 }
